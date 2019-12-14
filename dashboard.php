@@ -59,7 +59,7 @@
 				<li><a href="index.html" class="smoothScroll">Home</a></li>
 				<li><a href="index.html#about" class="smoothScroll">About</a></li>
                 <li><a href="index.html#screenshot" class="smoothScroll">Features</a></li>
-                <li><a href="dashboard.html" class="smoothScroll btn-success*" >Dashboard</a></li>
+                <li><a href="dashboard.php" class="smoothScroll btn-success*" >Dashboard</a></li>
                 <li><a href="index.html" class="smoothScroll btn-success*">Log out</a></li>  
 			</ul>
 		</div>
@@ -73,23 +73,31 @@
     <h2>Dashboard | AppTeria</h2>
      
     <br>
+
+    <?php
+      include 'user/changedevicestate.php';
+    ?>
+    
     <div class="content">
       <a href="#" class="btn left">
-        <span class="left icon">        
+        <span class="left icon">
+          <form action="#" method="POST" name='load1form'>
             <label class="rocker rocker-small">
-              <input type="checkbox">
-              <span class="switch-left">Off</span>
+              <input type="checkbox" name="load1" id="load1" onChange='submit(this)'>
+              
               <span class="switch-right">On</span>
-            </label>          
-          </span>
+              <span class="switch-left">Off</span>
+            </label>
+          </form>                  
+        </span>
         <span class="right title"><span class="arrow-right"></span>LOAD 1</span>
       </a>
       
       <a href="#" class="btn right">
         <span class="left title"><span class="arrow-left"></span>LOAD 2</span>
-        <span class="right icon fa fa-television">
+        <span class="right icon fa fa-television">x
           <label class="rocker rocker-small">
-            <input type="checkbox">
+            <input type="checkbox" name="load2" id="load2" onChange='submit(this)'>
             <span class="switch-left">Off</span>
             <span class="switch-right">On</span>
           </label> 
@@ -103,7 +111,7 @@
       <a href="#" class="btn left">
         <span class="left icon">        
             <label class="rocker rocker-small">
-              <input type="checkbox">
+              <input type="checkbox" name="load3" id="load3" onChange='submit(this)'>>
               <span class="switch-left">Off</span>
               <span class="switch-right">On</span>
             </label>          
@@ -115,7 +123,7 @@
         <span class="left title"><span class="arrow-left"></span>LOAD 4</span>
         <span class="right icon fa fa-television">
           <label class="rocker rocker-small">
-            <input type="checkbox">
+            <input type="checkbox" name="load4" id="load4" onChange='submit(this)'>>
             <span class="switch-left">Off</span>
             <span class="switch-right">On</span>
           </label> 
@@ -129,7 +137,7 @@
       <a href="#" class="btn left">
         <span class="left icon">        
             <label class="rocker rocker-small">
-              <input type="checkbox">
+              <input type="checkbox" name="load5" id="load5" onChange='submit(this)'>>
               <span class="switch-left">Off</span>
               <span class="switch-right">On</span>
             </label>          
@@ -141,7 +149,7 @@
         <span class="left title"><span class="arrow-left"></span>LOAD 6</span>
         <span class="right icon fa fa-television">
           <label class="rocker rocker-small">
-            <input type="checkbox">
+            <input type="checkbox" name="load6" id="load6" onChange='submit(this)'>>
             <span class="switch-left">Off</span>
             <span class="switch-right">On</span>
           </label> 
@@ -168,6 +176,26 @@
 <script src="js/smoothscroll.js"></script>
 <script src="js/wow.min.js"></script>
 <script src="js/custom.js"></script>
+
+<script type="text/javascript">
+
+
+  
+
+  submit = form => {
+    document.querySelector(form.name).submit();
+  }
+
+  let deviceState = "<?php echo $rowi[3].$rowi[4].$rowi[5].$rowi[6].$rowi[7].$rowi[8]; ?>";
+  
+  for (let i = 0; i < 6; i++) {
+    document.querySelector('#load'+(i+1)).checked = deviceState[i] == 0 ? false : true;
+  }
+  
+  
+  
+
+</script>
 
 </body>
 </html>

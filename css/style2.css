@@ -590,3 +590,8 @@ label.valid {
     margin-bottom: 10px; } }
 
 /*# sourceMappingURL=style.css.map */
+
+
+.forms-error-msg {
+  color: red !important;
+}
